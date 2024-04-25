@@ -8,6 +8,7 @@ use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class BookController extends Controller
 {
@@ -43,11 +44,11 @@ class BookController extends Controller
         return response()->json(['message' => 'Book added successfully'], 201);
     }
 
-
-    public function index(){
+    public function index()
+    {
         $books = Book::all();
 
-        return response()->json(['books' => $books],200);
+        return response()->json(['books' => $books], 200);
     }
 
     public function update(Request $request, $id)
